@@ -6,20 +6,11 @@ Attribute VB_Name = "Module3"
 'formatting for multiple action paramaters
 
 Sub ListRules()
-    Dim colStores As Outlook.Stores
     Dim oFileSys As Object
     Dim oStore As Outlook.Store
-    Dim oRoot As Outlook.Folder
-    Dim oCondition As Outlook.RuleCondition
-    Dim oCondfrom As Outlook.RuleCondition
-    Dim oAction As Outlook.RuleAction
     Dim colRules As Object
     Dim oRule As Outlook.Rule
-    Dim oInbox As Outlook.Folder
-    Dim oMoveTarget As Outlook.Folder
     Dim sOutput As String
-    Dim myVar As Variant
-    Dim currentObject
 
     'On Error Resume Next
     Set oFileSys = CreateObject("Scripting.FileSystemObject")
@@ -29,7 +20,6 @@ Sub ListRules()
     End If
     Open "D:\Users\tsuma\Documents\Outlook Files\OLrules.csv" For Output As #1
     Set oStore = Application.Session.DefaultStore
-    Set oRoot = oStore.GetRootFolder
     Set colRules = oStore.GetRules
     
     sOutput = """Num"",""Name"",""Action"",""Action Parameters"",""Condition"",""Condition Parameters""" & vbCrLf
